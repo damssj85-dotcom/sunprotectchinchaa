@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="SUN PROTECT CHINCHA — Productos de protección solar de calidad para la ciudad de Chincha, Perú."/>
+<title>SUN PROTECT CHINCHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1F3A5F;--gold:#D4A017;--cream:#F8F6F2;--olive:#7A8F5A}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:#333;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--navy);height:70px;display:flex;align-items:center;box-shadow:0 2px 20px rgba(0,0,0,.2)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{font-size:26px;color:var(--gold)}
+.logo-name{color:#fff;font-family:'Playfair Display',serif;font-weight:700;font-size:16px}
+.logo-sub{color:var(--gold);font-size:10px;letter-spacing:3px;font-weight:500}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;font-weight:500;font-size:14px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.hamburger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:4px}
+.mobile-menu{display:none;flex-direction:column;background:var(--navy);padding:16px 24px;border-top:1px solid rgba(255,255,255,.1)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;text-decoration:none;font-size:15px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* BOTONES */
+.btn-gold{background:var(--gold);color:#fff;border:none;padding:14px 32px;border-radius:4px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .2s;letter-spacing:.5px;display:inline-block;text-decoration:none}
+.btn-gold:hover{background:#b8891a;transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,160,23,.4)}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff;padding:12px 32px;border-radius:4px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .2s;letter-spacing:.5px;display:inline-block;text-decoration:none}
+.btn-outline:hover{background:#fff;color:var(--navy);transform:translateY(-1px)}
+
+/* SECCIÓN COMÚN */
+section{padding:100px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:3px;margin-bottom:14px}
+.section-title{font-size:clamp(28px,3.5vw,42px);color:var(--navy);line-height:1.25}
+.section-sub{color:#777;margin-top:12px;font-size:15px}
+.center{text-align:center}
+
+/* ANIMACIONES */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+.bounce{animation:bounce 1.8s infinite}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+#inicio{position:relative;height:100vh;min-height:600px;padding:0;display:flex;align-items:center;justify-content:center}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.42)}
+.hero-content{position:relative;text-align:center;color:#fff;padding:0 24px;max-width:820px}
+.hero-badge{display:inline-block;background:var(--gold);color:#fff;font-size:11px;font-weight:600;letter-spacing:3px;padding:6px 18px;border-radius:2px;margin-bottom:24px}
+.hero-title{font-size:clamp(36px,7vw,72px);font-weight:700;line-height:1.15;margin-bottom:20px}
+.hero-sub{font-size:clamp(15px,2vw,20px);font-weight:300;margin-bottom:40px;opacity:.9;line-height:1.6}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.scroll-indicator{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);color:#fff;text-align:center}
+.scroll-indicator p{font-size:12px;letter-spacing:2px;margin-bottom:8px;opacity:.7}
+.scroll-indicator span{font-size:22px;display:block}
+
+/* NOSOTROS */
+#nosotros{background:#fff}
+.nosotros-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.nosotros-img{width:100%;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:block}
+.nosotros-intro{color:#555;line-height:1.8;margin:20px 0;font-size:15px}
+.border-gold{padding-left:16px;border-left:3px solid var(--gold);margin-bottom:16px}
+.border-olive{padding-left:16px;border-left:3px solid var(--olive)}
+.bl-label{font-weight:600;color:var(--navy);margin-bottom:4px}
+.bl-text{color:#666;font-size:14px;line-height:1.7}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;padding:40px 32px;background:var(--navy);border-radius:16px}
+.stat-item{text-align:center}
+.stat-num{color:var(--gold);font-size:26px;font-family:'Playfair Display',serif;font-weight:700}
+.stat-label{color:rgba(255,255,255,.7);font-size:13px;margin-top:6px}
+
+/* PRODUCTOS */
+#productos{background:var(--cream)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px;margin-top:52px}
+.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.product-img{width:100%;height:180px;object-fit:cover;display:block}
+.product-body{padding:22px}
+.product-name{color:var(--navy);font-size:16px;margin-bottom:8px;line-height:1.3}
+.product-desc{color:#777;font-size:13px;line-height:1.6;margin-bottom:14px}
+.product-benefits{list-style:none;margin-bottom:18px}
+.product-benefits li{color:#555;font-size:12px;padding:3px 0;display:flex;align-items:center;gap:6px}
+.product-benefits li::before{content:'✓';color:var(--gold);font-weight:700}
+.product-btn{width:100%;padding:10px 0;font-size:13px;border:none;cursor:pointer}
+
+/* BENEFICIOS */
+#beneficios{background:#fff}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:24px;margin-top:52px}
+.benefit-card{background:#fff;border:1px solid #eee;border-radius:12px;padding:28px 20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s}
+.benefit-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.benefit-icon{font-size:40px;margin-bottom:14px}
+.benefit-title{color:var(--navy);font-size:16px;margin-bottom:10px}
+.benefit-desc{color:#777;font-size:13px;line-height:1.6}
+
+/* NECESIDAD */
+#necesidad{background:var(--navy);padding:80px 24px}
+.necesidad-inner{max-width:900px;margin:0 auto;text-align:center}
+.quote-mark{font-size:48px;color:var(--gold);line-height:1;margin-bottom:20px}
+.quote-text{color:rgba(255,255,255,.8);font-size:17px;line-height:1.9;font-style:italic;max-width:720px;margin:0 auto}
+.divider{width:60px;height:3px;background:var(--gold);border-radius:2px;margin:32px auto 0}
+
+/* PLAN COMERCIAL */
+#plan-comercial{background:var(--cream)}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px;margin-top:52px}
+.plan-card{background:#fff;border-radius:14px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.plan-icon{font-size:36px;margin-bottom:14px}
+.plan-title{color:var(--navy);font-size:17px;font-family:'Playfair Display',serif;margin-bottom:12px}
+.plan-text{color:#666;font-size:14px;line-height:1.7}
+.plan-list{list-style:none}
+.plan-list li{color:#666;font-size:13px;padding:4px 0;display:flex;align-items:flex-start;gap:8px}
+.plan-list li::before{content:'▸';color:var(--gold);font-weight:700;flex-shrink:0}
+
+/* FODA */
+#foda{background:#fff}
+.foda-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.foda-card{border-radius:12px;padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .3s}
+.foda-card:hover{transform:translateY(-4px)}
+.foda-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.foda-icon{font-size:28px}
+.foda-title{font-size:20px;font-family:'Playfair Display',serif}
+.foda-list{list-style:none}
+.foda-list li{color:#444;font-size:14px;padding:7px 0;display:flex;align-items:flex-start;gap:10px;line-height:1.5;border-bottom:1px solid rgba(0,0,0,.05)}
+.foda-list li:last-child{border-bottom:none}
+.foda-bullet{font-weight:700;flex-shrink:0}
+
+/* TESTIMONIOS */
+#testimonios{background:var(--navy);padding:100px 24px}
+.testimonios-inner{max-width:700px;margin:0 auto;text-align:center}
+.testimonial-box{background:rgba(255,255,255,.07);border-radius:16px;padding:44px 40px;border:1px solid rgba(255,255,255,.1);animation:fadeSlide .6s ease}
+.t-quote{font-size:48px;color:var(--gold);line-height:1;margin-bottom:20px}
+.t-text{color:rgba(255,255,255,.9);font-size:18px;line-height:1.8;font-style:italic;margin-bottom:28px}
+.t-name{color:var(--gold);font-weight:600}
+.t-role{color:rgba(255,255,255,.5);font-size:13px;margin-top:4px}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:28px}
+.dot{height:8px;border-radius:4px;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:all .3s}
+.dot.active{width:28px;background:var(--gold)}
+.dot:not(.active){width:8px}
+
+/* GALERÍA */
+#galeria{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.gallery-item{overflow:hidden;border-radius:10px;cursor:pointer}
+.gallery-item img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.08)}
+
+/* CONTACTO */
+#contacto{background:#fff}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;margin-top:52px}
+.contact-card{background:var(--cream);border-radius:12px;padding:28px 20px;text-align:center;text-decoration:none;display:block;transition:all .3s;border:2px solid transparent}
+.contact-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.contact-icon{font-size:36px;margin-bottom:12px}
+.contact-platform{color:var(--navy);font-weight:600;margin-bottom:6px}
+.contact-handle{color:var(--gold);font-size:14px}
+.contact-schedule{color:#666;font-size:13px;line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--navy);padding:60px 24px 28px;color:#fff}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo-icon{font-size:30px;color:var(--gold)}
+.footer-brand{font-family:'Playfair Display',serif;font-weight:700;font-size:18px}
+.footer-tagline{color:var(--gold);font-size:10px;letter-spacing:3px}
+.footer-desc{color:rgba(255,255,255,.55);font-size:13px;line-height:1.8;max-width:300px}
+.footer-heading{color:var(--gold);font-weight:600;font-size:12px;letter-spacing:2px;margin-bottom:20px}
+.footer-links{list-style:none}
+.footer-links a{display:block;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;padding:6px 0;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center}
+.footer-copy{color:rgba(255,255,255,.4);font-size:12px;margin-bottom:6px}
+.footer-author{color:rgba(255,255,255,.3);font-size:11px}
+
+/* WHATSAPP */
+.wa-float{position:fixed;bottom:28px;right:28px;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.5);z-index:1000;text-decoration:none;transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nosotros-grid{grid-template-columns:1fr;gap:32px}
+  .nosotros-img{order:-1}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .foda-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#inicio" class="logo">
+      <span class="logo-icon">☀️</span>
+      <div>
+        <div class="logo-name">SUN PROTECT CHINCHA</div>
+        <div class="logo-sub">PROTECCIÓN SOLAR</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#plan-comercial">Plan Comercial</a></li>
+      <li><a href="#foda">FODA</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#productos">Productos</a>
+    <a href="#plan-comercial">Plan Comercial</a>
+    <a href="#foda">FODA</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <img class="hero-img" loading="eager"
+    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&h=800&fit=crop"
+    alt="Persona en la playa con protector solar"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">PROTECCIÓN SOLAR PREMIUM · CHINCHA</div>
+    <h1 class="hero-title">Protege tu piel,<br>disfruta el sol.</h1>
+    <p class="hero-sub">La mejor protección solar para la ciudad de Chincha.</p>
+    <div class="hero-btns">
+      <a href="#productos" class="btn-gold">Ver Productos</a>
+      <a href="#nosotros" class="btn-outline">Conoce Más</a>
+    </div>
+  </div>
+  <div class="scroll-indicator bounce">
+    <p>SCROLL</p><span>↓</span>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="section-inner">
+    <div class="nosotros-grid reveal">
+      <div>
+        <span class="section-tag">SOBRE NOSOTROS</span>
+        <h2 class="section-title">Cuidando tu piel<br>desde Chincha</h2>
+        <p class="nosotros-intro"><strong>SUN PROTECT CHINCHA</strong> nace con el objetivo de promover el cuidado de la piel y ofrecer productos de protección solar de calidad para la población de Chincha.</p>
+        <div class="border-gold">
+          <div class="bl-label">Misión</div>
+          <div class="bl-text">Brindar productos de protección solar que ayuden a prevenir los daños causados por la exposición al sol.</div>
+        </div>
+        <div class="border-olive" style="margin-top:16px">
+          <div class="bl-label">Visión</div>
+          <div class="bl-text">Ser la empresa líder en productos de protección solar en la ciudad de Chincha.</div>
+        </div>
+      </div>
+      <div>
+        <img class="nosotros-img" loading="lazy"
+          src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=500&fit=crop"
+          alt="Cuidado de la piel"/>
+      </div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-item"><div class="stat-num">+100</div><div class="stat-label">Clientes atendidos</div></div>
+      <div class="stat-item"><div class="stat-num">SPF 30/50</div><div class="stat-label">Variedad de productos</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Atención personalizada</div></div>
+      <div class="stat-item"><div class="stat-num">Online</div><div class="stat-label">Ventas y presenciales</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">CATÁLOGO</span>
+      <h2 class="section-title">Nuestros Productos</h2>
+      <p class="section-sub">Selección premium de protección solar para toda la familia.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <img class="product-img" loading="lazy" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop" alt="Bloqueador SPF 30"/>
+        <div class="product-body">
+          <h3 class="product-name">Bloqueador Solar SPF 30</h3>
+          <p class="product-desc">Protección diaria ideal para actividades al aire libre.</p>
+          <ul class="product-benefits"><li>Resistente al agua</li><li>No graso</li><li>Para piel sensible</li></ul>
+          <button class="btn-gold product-btn">Más información</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" loading="lazy" src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=300&fit=crop" alt="Bloqueador SPF 50"/>
+        <div class="product-body">
+          <h3 class="product-name">Bloqueador Solar SPF 50</h3>
+          <p class="product-desc">Alta protección para exposición prolongada al sol.</p>
+          <ul class="product-benefits"><li>Máxima protección UV</li><li>Hidratante</li><li>Larga duración</li></ul>
+          <button class="btn-gold product-btn">Más información</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" loading="lazy" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop" alt="Protector Labial"/>
+        <div class="product-body">
+          <h3 class="product-name">Protector Labial con SPF</h3>
+          <p class="product-desc">Cuida y protege tus labios de los rayos del sol.</p>
+          <ul class="product-benefits"><li>SPF integrado</li><li>Humectante</li><li>Sabor neutro</li></ul>
+          <button class="btn-gold product-btn">Más información</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" loading="lazy" src="https://images.unsplash.com/photo-1571781565036-d3f759be73e4?w=400&h=300&fit=crop" alt="Kit Solar"/>
+        <div class="product-body">
+          <h3 class="product-name">Kit de Protección Solar</h3>
+          <p class="product-desc">Combo completo para toda la familia.</p>
+          <ul class="product-benefits"><li>Ahorro en conjunto</li><li>Variedad SPF</li><li>Envase práctico</li></ul>
+          <button class="btn-gold product-btn">Más información</button>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" loading="lazy" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop" alt="Bloqueador Infantil"/>
+        <div class="product-body">
+          <h3 class="product-name">Bloqueador Infantil</h3>
+          <p class="product-desc">Fórmula suave especialmente diseñada para niños.</p>
+          <ul class="product-benefits"><li>Hipoalergénico</li><li>Libre de parabenos</li><li>SPF 50+</li></ul>
+          <button class="btn-gold product-btn">Más información</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">POR QUÉ ELEGIRNOS</span>
+      <h2 class="section-title">Beneficios de nuestra<br>protección solar</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal"><div class="benefit-icon">☀️</div><h3 class="benefit-title">Protección UV</h3><p class="benefit-desc">Bloquea los rayos UVA y UVB que dañan la piel.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">✨</div><h3 class="benefit-title">Anti-envejecimiento</h3><p class="benefit-desc">Previene el envejecimiento prematuro causado por el sol.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">🌿</div><h3 class="benefit-title">Prevención de manchas</h3><p class="benefit-desc">Evita la aparición de manchas y despigmentación.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">🏃</div><h3 class="benefit-title">Actividades al aire libre</h3><p class="benefit-desc">Protección duradera para deportistas y trabajadores.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">💧</div><h3 class="benefit-title">Salud de la piel</h3><p class="benefit-desc">Mantiene tu piel sana, hidratada y luminosa.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NECESIDAD -->
+<section id="necesidad">
+  <div class="necesidad-inner reveal">
+    <span class="section-tag">ANÁLISIS DE MERCADO</span>
+    <h2 class="section-title" style="color:#fff;margin-bottom:28px">Identificación de la<br>Necesidad del Mercado</h2>
+    <div class="quote-mark">"</div>
+    <p class="quote-text">La ciudad de Chincha presenta altas temperaturas y una fuerte exposición al sol durante gran parte del año. Muchas personas necesitan productos de protección solar para cuidar su piel, por lo que se identifica una oportunidad de negocio en la venta de bloqueadores solares y productos de cuidado personal.</p>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- PLAN COMERCIAL -->
+<section id="plan-comercial">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">ESTRATEGIA</span>
+      <h2 class="section-title">Plan Comercial</h2>
+    </div>
+    <div class="plan-grid">
+      <div class="plan-card reveal"><div class="plan-icon">🏪</div><h3 class="plan-title">Tipo de Negocio</h3><p class="plan-text">Venta de bloqueadores solares y productos para el cuidado de la piel.</p></div>
+      <div class="plan-card reveal"><div class="plan-icon">👥</div><h3 class="plan-title">Público Objetivo</h3><p class="plan-text">Jóvenes, trabajadores, deportistas, agricultores y familias de Chincha.</p></div>
+      <div class="plan-card reveal">
+        <div class="plan-icon">📱</div><h3 class="plan-title">Estrategias de Marketing</h3>
+        <ul class="plan-list"><li>Publicaciones en Instagram y TikTok</li><li>Campañas educativas sobre el cuidado de la piel</li><li>Promociones y descuentos especiales</li><li>Recomendaciones sobre el cuidado de la piel</li></ul>
+      </div>
+      <div class="plan-card reveal">
+        <div class="plan-icon">📲</div><h3 class="plan-title">Canales de Venta</h3>
+        <ul class="plan-list"><li>Instagram</li><li>TikTok</li><li>WhatsApp</li></ul>
+      </div>
+      <div class="plan-card reveal">
+        <div class="plan-icon">🚚</div><h3 class="plan-title">Forma de Entrega</h3>
+        <ul class="plan-list"><li>Entregas coordinadas a domicilio</li><li>Puntos de recojo en Chincha</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FODA -->
+<section id="foda">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">ANÁLISIS ESTRATÉGICO</span>
+      <h2 class="section-title">Análisis FODA</h2>
+    </div>
+    <div class="foda-grid">
+      <div class="foda-card reveal" style="background:#1F3A5F10;border:2px solid #1F3A5F33">
+        <div class="foda-header"><span class="foda-icon">💪</span><h3 class="foda-title" style="color:#1F3A5F">Fortalezas</h3></div>
+        <ul class="foda-list">
+          <li><span class="foda-bullet" style="color:#1F3A5F">•</span>Producto útil para el clima de Chincha</li>
+          <li><span class="foda-bullet" style="color:#1F3A5F">•</span>Enfoque en la salud y bienestar</li>
+          <li><span class="foda-bullet" style="color:#1F3A5F">•</span>Variedad de productos (SPF 30, 50, infantil, labial)</li>
+        </ul>
+      </div>
+      <div class="foda-card reveal" style="background:#7A8F5A10;border:2px solid #7A8F5A33">
+        <div class="foda-header"><span class="foda-icon">🌱</span><h3 class="foda-title" style="color:#7A8F5A">Oportunidades</h3></div>
+        <ul class="foda-list">
+          <li><span class="foda-bullet" style="color:#7A8F5A">•</span>Altas temperaturas durante todo el año</li>
+          <li><span class="foda-bullet" style="color:#7A8F5A">•</span>Mayor interés por el cuidado de la piel</li>
+          <li><span class="foda-bullet" style="color:#7A8F5A">•</span>Crecimiento de las compras online</li>
+        </ul>
+      </div>
+      <div class="foda-card reveal" style="background:#C0392B10;border:2px solid #C0392B33">
+        <div class="foda-header"><span class="foda-icon">⚠️</span><h3 class="foda-title" style="color:#C0392B">Debilidades</h3></div>
+        <ul class="foda-list">
+          <li><span class="foda-bullet" style="color:#C0392B">•</span>Empresa nueva, en proceso de posicionamiento</li>
+          <li><span class="foda-bullet" style="color:#C0392B">•</span>Poco reconocimiento de marca</li>
+          <li><span class="foda-bullet" style="color:#C0392B">•</span>Capital inicial limitado</li>
+        </ul>
+      </div>
+      <div class="foda-card reveal" style="background:#7D3C9810;border:2px solid #7D3C9833">
+        <div class="foda-header"><span class="foda-icon">🔍</span><h3 class="foda-title" style="color:#7D3C98">Amenazas</h3></div>
+        <ul class="foda-list">
+          <li><span class="foda-bullet" style="color:#7D3C98">•</span>Competencia de farmacias y supermercados</li>
+          <li><span class="foda-bullet" style="color:#7D3C98">•</span>Posible incremento de precios</li>
+          <li><span class="foda-bullet" style="color:#7D3C98">•</span>Aparición de nuevos competidores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="testimonios-inner">
+    <span class="section-tag">TESTIMONIOS</span>
+    <h2 class="section-title" style="color:#fff;margin-bottom:48px">Lo que dicen nuestros<br>clientes</h2>
+    <div class="testimonial-box" id="testimonialBox">
+      <div class="t-quote">"</div>
+      <p class="t-text" id="testimonialText">Excelente producto y muy buena atención.</p>
+      <div class="t-name" id="testimonialName">María López</div>
+      <div class="t-role" id="testimonialRole">Trabajadora de campo</div>
+    </div>
+    <div class="dots">
+      <button class="dot active" onclick="setT(0)" aria-label="1"></button>
+      <button class="dot"        onclick="setT(1)" aria-label="2"></button>
+      <button class="dot"        onclick="setT(2)" aria-label="3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">GALERÍA</span>
+      <h2 class="section-title">Playa, sol y protección</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="Playa"/></div>
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&h=300&fit=crop" alt="Verano"/></div>
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=400&h=300&fit=crop" alt="Sol"/></div>
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop" alt="Producto solar"/></div>
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1554502078-ef0fc409efce?w=400&h=300&fit=crop" alt="Cuidado de piel"/></div>
+      <div class="gallery-item reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=300&fit=crop" alt="Bloqueador"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="reveal center">
+      <span class="section-tag">ENCUÉNTRANOS</span>
+      <h2 class="section-title">Contáctanos</h2>
+    </div>
+    <div class="contact-grid">
+      <a href="https://instagram.com/sunprotectchincha" target="_blank" rel="noreferrer" class="contact-card reveal">
+        <div class="contact-icon">📸</div><div class="contact-platform">Instagram</div><div class="contact-handle">@sunprotectchincha</div>
+      </a>
+      <a href="https://tiktok.com/@sunprotectchincha" target="_blank" rel="noreferrer" class="contact-card reveal">
+        <div class="contact-icon">🎵</div><div class="contact-platform">TikTok</div><div class="contact-handle">@sunprotectchincha</div>
+      </a>
+      <a href="https://wa.me/51987565455" target="_blank" rel="noreferrer" class="contact-card reveal">
+        <div class="contact-icon">💬</div><div class="contact-platform">WhatsApp</div><div class="contact-handle">+51 987 565 455</div>
+      </a>
+      <div class="contact-card reveal">
+        <div class="contact-icon">🕐</div><div class="contact-platform">Horario</div>
+        <div class="contact-schedule">Lunes a sábado<br>9:00 a.m. – 8:00 p.m.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="footer-logo-icon">☀️</span>
+          <div><div class="footer-brand">SUN PROTECT CHINCHA</div><div class="footer-tagline">CUIDANDO TU PIEL</div></div>
+        </div>
+        <p class="footer-desc">La mejor selección de productos de protección solar para la ciudad de Chincha.</p>
+      </div>
+      <div>
+        <div class="footer-heading">ENLACES</div>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li><li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#productos">Productos</a></li><li><a href="#plan-comercial">Plan Comercial</a></li>
+          <li><a href="#foda">FODA</a></li><li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">REDES SOCIALES</div>
+        <ul class="footer-links">
+          <li><a href="https://instagram.com/sunprotectchincha" target="_blank">📸 Instagram</a></li>
+          <li><a href="https://tiktok.com/@sunprotectchincha" target="_blank">🎵 TikTok</a></li>
+          <li><a href="https://wa.me/51987565455" target="_blank">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 SUN PROTECT CHINCHA - Todos los derechos reservados.</p>
+      <p class="footer-author">Diseñado por Rafael Danilo Huaman Moreno.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/51987565455" target="_blank" rel="noreferrer" class="wa-float" title="Escríbenos por WhatsApp">💬</a>
+
+<script>
+// Hamburger
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',function(){mobileMenu.classList.toggle('open');});
+document.querySelectorAll('.mobile-menu a').forEach(function(a){a.addEventListener('click',function(){mobileMenu.classList.remove('open');});});
+
+// Scroll reveal
+var reveals=document.querySelectorAll('.reveal');
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+reveals.forEach(function(el){obs.observe(el);});
+
+// Navbar shadow
+window.addEventListener('scroll',function(){document.querySelector('.navbar').style.boxShadow=window.scrollY>10?'0 4px 30px rgba(0,0,0,.3)':'0 2px 20px rgba(0,0,0,.2)';});
+
+// Testimonios
+var slides=[
+  {text:'Excelente producto y muy buena atención.',name:'María López',role:'Trabajadora de campo'},
+  {text:'Ahora puedo trabajar bajo el sol con mayor seguridad.',name:'Carlos Ramos',role:'Agricultor'},
+  {text:'Productos de calidad y fáciles de conseguir.',name:'Lucia Flores',role:'Deportista'}
+];
+var current=0;
+function setT(i){
+  current=i;
+  var box=document.getElementById('testimonialBox');
+  box.style.animation='none';box.offsetHeight;box.style.animation='fadeSlide .6s ease';
+  document.getElementById('testimonialText').textContent=slides[i].text;
+  document.getElementById('testimonialName').textContent=slides[i].name;
+  document.getElementById('testimonialRole').textContent=slides[i].role;
+  document.querySelectorAll('.dot').forEach(function(d,j){d.classList.toggle('active',j===i);});
+}
+window.setT=setT;
+setInterval(function(){setT((current+1)%slides.length);},3500);
+</script>
+</body>
+</html>
